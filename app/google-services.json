@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "919247947009",
+    "project_id": "justfortest-638a7",
+    "storage_bucket": "justfortest-638a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919247947009:android:1c644df0c0c6f295d70700",
+        "android_client_info": {
+          "package_name": "tzu.hsuan.tseng.tooowlforate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919247947009-k8afbgujkieustg5lb0tu0c6mmaqd6v3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwL_ehm3b2nfgkbPJZ1pKf27kJLppIoW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919247947009-k8afbgujkieustg5lb0tu0c6mmaqd6v3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
