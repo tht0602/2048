@@ -1,21 +1,20 @@
 package tzu.hsuan.tseng.tooowlforate
 
-import android.content.Context
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tzu.hsuan.tseng.tooowlforate.databinding.ActivityMainBinding
 import tzu.hsuan.tseng.tooowlforate.databinding.ListItemActivityBinding
 
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var adapter: ActivityAdapter
+class MainActivity : Activity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +26,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        adapter = ActivityAdapter(getActivityList())
-        binding.rvActivity.adapter = adapter
+        binding.rvActivity.adapter = ActivityAdapter(getActivityList())
+        binding.rvActivity.layoutManager = LinearLayoutManager(this)
+        binding.rvActivity.isNestedScrollingEnabled = false
+        binding.rvActivity.adapter = ActivityAdapter(getActivityList())
         //TODO 沒反應
     }
 
@@ -40,24 +41,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     class ActivityAdapter(private val itemList: Array<ActivityInfo>) :
-        RecyclerView.Adapter<ActivityAdapter.RecyclerViewHolder>() {
+        RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder>() {
 
-        class RecyclerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-            private val binding = ListItemActivityBinding.bind(itemView)
-            private val context: Context = itemView.context
+        class ActivityViewHolder(val binding: ListItemActivityBinding): RecyclerView.ViewHolder(binding.root) {
 
             fun setData(activityInfo: ActivityInfo, position: Int){
-                binding.tvActivity.text = activityInfo.name
+                binding.tvActivity.text = activityInfo.name.substringAfter(activityInfo.packageName)
+                binding.root.setOnClickListener {
+                    val c = Class.forName(activityInfo.name)
+                    val intent = Intent(binding.root.context, c)
+                    startActivity(binding.root.context, intent, null)
+                }
             }
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
-            val layoutInflater: LayoutInflater = LayoutInflater.from(parent.context)
-            val rootView: View = layoutInflater.inflate(R.layout.list_item_activity, parent, false)
-            return RecyclerViewHolder(rootView)
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
+            ListItemActivityBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return ActivityViewHolder(
+                ListItemActivityBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            )
         }
 
-        override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
+        override fun onBindViewHolder(holder: ActivityViewHolder, position: Int) {
             holder.setData(itemList[position], position)
         }
 
