@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.view.MotionEvent
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.get
 import tzu.hsuan.tseng.tooowlforate.databinding.Activity2048Binding
 import kotlin.random.Random
 
@@ -165,9 +168,16 @@ class TooOwlForAteActivity : Activity() {
 
     private fun showArray() {
         var string = ""
-        array.forEach {
-            string += it.contentToString() + "\n"
+        for (i in 0..3){
+            for (j in 0..3){
+                ((binding.ll2048[i] as LinearLayout)[j] as TextView).text = array[i][j].toString()
+            }
         }
-        binding.tvTest.text = string
+        array.forEach { line ->
+            line.forEach { cell ->
+                string += cell.toString().padStart(4, ' ')
+            }
+            string += "\n"
+        }
     }
 }
