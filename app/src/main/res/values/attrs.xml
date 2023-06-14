@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SafeCheckRingView">
+        <attr name="denominator" format="integer"/>
+        <attr name="numerator" format="integer"/>
+        <attr name="ringBackColor" format="color"/>
+        <attr name="ringGradientTopColor" format="color"/>
+        <attr name="ringGradientBottomColor" format="color"/>
+        <attr name="shadowColor" format="color"/>
+        <attr name="text" format="string"/>
+        <attr name="denominatorTextColor" format="color"/>
+        <attr name="numeratorTextColor" format="color"/>
+    </declare-styleable>
+</resources>

@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/check_ring_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <tzu.hsuan.tseng.tooowlforate.safering.SafeCheckRingView
-        android:id="@+id/check_ring"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+
+        <tzu.hsuan.tseng.tooowlforate.safering.SafeCheckRingAnimateView
+            android:id="@+id/check_ring"
+            android:layout_width="124dp"
+            android:layout_height="124dp"
+            app:text="目前進度"
+            app:numerator="1"
+            app:denominator="8"
+            app:ringBackColor="#e8eaec"
+            app:ringGradientTopColor="#757eec"
+            app:ringGradientBottomColor="#78cba3"
+            app:shadowColor="#1b37454f"
+            app:denominatorTextColor="#00283d"
+            app:numeratorTextColor="#26a862"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <include layout="@layout/security_suggest_button"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
