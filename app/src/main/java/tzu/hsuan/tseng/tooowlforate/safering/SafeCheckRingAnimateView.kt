@@ -12,7 +12,8 @@ import android.graphics.Shader
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.BaseInterpolator
+import android.view.animation.PathInterpolator
 import tzu.hsuan.tseng.tooowlforate.R
 import kotlin.math.abs
 
@@ -285,7 +286,7 @@ class SafeCheckRingAnimateView @JvmOverloads constructor(
 
         valueAnimator?.cancel()
         valueAnimator = ValueAnimator.ofInt(fixedStartProgress, fixedEndProgress).apply {
-            interpolator = AccelerateDecelerateInterpolator()
+            interpolator = PathInterpolator(0.4f, 0f, 0.2f,1f)
             duration = abs(fixedEndProgress - fixedStartProgress) * DEFAULT_ANIMATION_DURATION
             addUpdateListener {
                 processDegree = it.animatedValue as Int
