@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="tzu.hsuan.tseng.tooowlforate">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -38,6 +40,17 @@
             android:name=".SafeRingActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".BroadcastActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".ForegroundServiceActivity"
+            android:exported="false">
+        </activity>
+        <service android:name=".service.ForegroundTestService"
+            android:foregroundServiceType="camera|microphone"
+            android:exported="false"/>
     </application>
 
 </manifest>
